@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cancel Ticket</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+
+        form {
+            display: inline-block;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input {
+            margin-bottom: 15px;
+        }
+
+        .cancel-message {
+            font-size: 18px;
+            color: #FF0000;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <form action="cancel_process.php" method="post">
+        <label for="ticketNumber">Enter Ticket Number to Cancel:</label>
+        <input type="text" name="ticketNumber" required>
+        <br>
+	<label for="username">Name:</label>
+        <input type="text" name="username" required><br>
+
+        <label for="fromlocation">From Location:</label>
+        <input type="text" name="fromlocation" required><br>
+
+        <label for="tolocation">To Location:</label>
+        <input type="text" name="tolocation" required><br>
+
+        <label for="departuretime">Departure Time:</label>
+        <input type="datetime-local" name="departuretime" required><br>
+
+        <label for="returntime">Return Time:</label>
+        <input type="datetime-local" name="returntime" required><br>
+
+        <input type="submit" value="Cancel Ticket">
+    </form>
+
+
+    <div class="cancel-message">
+        <?php
+        if (isset($_GET['message'])) {
+            echo htmlspecialchars($_GET['message']);
+        }
+        ?>
+    </div>
+</body>
+</html>
